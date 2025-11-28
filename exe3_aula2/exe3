@@ -1,0 +1,93 @@
+Ainda sobre o mesmo histórico de commits do exercício 01, suponha que a HEAD esteja em master e você faz um novo commit.
+
+Como fica o histórico depois disso ?
+
+Como resposta, submeta um documento (Word, PDF, etc.) que mostre o desenho do novo histórico e explique por que ele fica assim.
+
+✅ Resposta — Como fica o histórico após um novo commit em master
+📌 Situação inicial
+
+No diagrama original, temos:
+
+A branch master apontando para um commit central.
+
+A HEAD está em master, ou seja, você está com checkout em master.
+
+Branches long-exposure e high-iso apontam para outros commits que divergem da master.
+
+Representação simplificada:
+
+long-exposure
+      ●
+      |
+      ●
+      \
+       ● ← master (HEAD)
+      /
+     ●
+      \
+       ● ← high-iso
+
+✅ Depois que você cria um novo commit na master
+
+Quando HEAD está em master e você faz um commit, acontece:
+
+O Git cria um novo commit filho do commit atual de master.
+
+A branch master avança para esse novo commit.
+
+As outras branches não mudam, porque elas apontam para commits específicos e não acompanham a master automaticamente.
+
+Resultado final:
+
+
+
+long-exposure
+       ●
+       |
+       ●
+        \
+         ●
+        /
+       ● ——● ← NEW COMMIT (master, HEAD)
+        \
+         ● ← high-iso
+
+🎯 Por que o histórico fica assim? Explicação Técnica
+
+A resposta envolve três conceitos fundamentais do Git:
+
+1) HEAD aponta para a branch atual
+
+Como a HEAD estava em master:
+
+HEAD → master → <commit>
+
+
+qualquer commit será adicionado somente nesta branch.
+
+2) Branches são apenas ponteiros
+
+A branch master aponta para um commit.
+Ao criar um commit novo:
+
+esse commit aponta para o commit anterior na master (seu parent),
+
+e o ponteiro master é movido para ele.
+
+Ou seja:
+
+master: old_commit → new_commit
+
+
+As branches long-exposure e high-iso ficam exatamente onde estavam.
+
+3) Git cria apenas um novo nó na linha da branch atual
+
+Não há fusão, alteração lateral ou avanço de outras branches.
+
+O grafo muda somente abaixo da master, porque esse era o branch checkoutado.
+
+🧠 Resumo elegante (para colocar no final do PDF)
+
+Quando a HEAD está em master e um novo commit é criado, o Git insere o commit como descendente do commit atual da master e move o ponteiro dessa branch para o novo commit. As demais branches permanecem inalteradas, pois representam referências estáveis a commits específicos no grafo. Assim, o histórico se estende linearmente apenas na branch master, preservando a estrutura divergente anterior.
