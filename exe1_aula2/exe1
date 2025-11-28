@@ -1,0 +1,5 @@
+A afirmação seguinte é verdadeira ou falsa ? Explique.
+
+Uma branch é uma sequência de commits. Portanto, no histórico de commits abaixo, a branch long-exposure corresponde aos dois commits à esquerda da master.
+
+A afirmação é falsa porque uma branch não representa um conjunto ou sequência de commits, mas apenas uma referência simbólica para um commit específico. O histórico que aparenta “pertencer” à branch é apenas o encadeamento de commits pais a partir desse commit apontado. Portanto, no diagrama apresentado, long-exposure não corresponde aos dois commits à esquerda da master, mas somente ao commit para o qual a etiqueta long-exposure aponta.
